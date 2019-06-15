@@ -10,30 +10,37 @@ import getElementXpath from 'element-xpath';
 * frames['mainiframe']
 * */
 $(function () {
-   const iframe = $('#mainiframe')[0];
-   const iframeWin = frames['mainiframe'];
-  $('#mainiframe').attr('srcdoc', iframeStr);
+   const iframe = document.getElementById('mainiframe');
+   // const iframeWin = frames['mainiframe'];
+   const iframeWin = iframe.contentWindow;
+  iframe.setAttribute('srcdoc', iframeStr);
   iframe.onload = function () {
-    // $(this).contents()
-    $(iframeWin.document.body).append(`<link rel="stylesheet" href="/src/styles/index.css" />`);
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = '/src/styles/index.css';
+    iframeWin.document.body.appendChild(link);
     Select.pageInit(iframeWin);
 
-
-    $(iframeWin.document).click(function (event) {
+    iframeWin.document.addEventListener('click', function (event) {
       // event.stopPropagation();
       const target = event.target;
-      $(target).toggleClass('add');
+      if (target.classList.contains('add')) {
+        target.classList.remove('add');
+      }else {
+        target.classList.add('add');
+      }
+
       // console.log(target.innerHTML);
       // console.log(target.parentNode.outerHTML);
       /*getElementXpath(event.toElement, function (err, xpath) {
-        if(err) {
-          console.log(err);
-        }else {
-          console.log('xpath', xpath);
-        }
-      });*/
-    /*  var path = Select.getCssPath(target);
-      console.log("path：" + path);*/
+       if(err) {
+       console.log(err);
+       }else {
+       console.log('xpath', xpath);
+       }
+       });*/
+      /*  var path = Select.getCssPath(target);
+       console.log("path：" + path);*/
     });
   }
 

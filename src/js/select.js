@@ -54,7 +54,22 @@ export function pageInit(iframeWin) {
   /**
    * 取消页面点击事件
    */
-  $(iframeWin.document.body).find("*").off().click(function (event) {
+
+  const allDoms = iframeWin.document.body.getElementsByTagName('*');
+  for(let a = 0; a < allDoms.length; a++) {
+    allDoms[a].addEventListener('click', function (e) {
+      e.preventDefault();
+    });
+    allDoms[a].addEventListener('mouseover', function (e) {
+      e.stopPropagation();
+      e.target.classList.add('hover');
+    });
+    allDoms[a].addEventListener('mouseout', function (e) {
+      e.stopPropagation();
+      e.target.classList.remove('hover');
+    });
+  }
+  /*$(iframeWin.document.body).find("*").off().click(function (event) {
     event.preventDefault();
   }).mouseover(function (e) {
     // console.log("鼠标所在：" + path);
@@ -64,7 +79,7 @@ export function pageInit(iframeWin) {
   }).mouseout(function (e) {
     e.stopPropagation();
     $(e.target).removeClass('hover');
-  });
+  });*/
 }
 
 
