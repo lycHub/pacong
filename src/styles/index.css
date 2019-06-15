@@ -1,0 +1,9 @@
+.hover{
+  outline: solid 1px #1d83ff;
+}
+.delete{
+  outline: solid 1px #ff3d4e;
+}
+.add{
+  outline: solid 1px #83ff5f;
+}

@@ -1,0 +1,6 @@
+cssPath:
+https://github.com/micnews/css-path
+https://github.com/ajhsu/csspath/blob/master/lib/index.js
+https://github.com/angus-c/cssPath/blob/master/lib/cssPath.js
+https://github.com/diguazai/get-css-path/blob/master/index.js
+https://stackoverflow.com/questions/3620116/get-css-path-from-dom-element
