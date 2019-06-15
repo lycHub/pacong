@@ -1,4 +1,5 @@
 import $ from 'jquery';
+import cssPath from 'css-path';
 /**
  * 获取传入元素的cssSelector
  * @param dom
@@ -54,16 +55,20 @@ export function pageInit(iframeWin) {
   /**
    * 取消页面点击事件
    */
-  $(iframeWin.document.body).find("*").off().click(function (event) {
+  $(iframeWin.document.body).off().click(function (event) {
     event.preventDefault();
   }).mouseover(function (e) {
     // console.log("鼠标所在：" + path);
     e.stopPropagation();
-    const target = $(e.target);
-    target.addClass('hover');
+    const path = getCssPath(e.target);
+  /*  const target = $(e.target);
+    target.addClass('hover');*/
+    $(this).find(path).addClass('hover');
   }).mouseout(function (e) {
     e.stopPropagation();
-    $(e.target).removeClass('hover');
+    var path = getCssPath(e.target);
+    // $(e.target).removeClass('hover');
+    $(this).find(path).removeClass('hover');
   });
 }
 

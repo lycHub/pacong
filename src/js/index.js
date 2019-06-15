@@ -1,10 +1,12 @@
 import '../styles/index.css';
 import $ from 'jquery';
 import * as Select from './select';
-// import iframeStr from './iframeStr';
+// import iframeStr from './strs/iframeStr';
 import iframeStr from './strs/baiduStr';
 // import iframeStr from './strs/zhanzhang';
 import getElementXpath from 'element-xpath';
+import cssPath from 'css-path';
+
 /*
 * document.getElementById("mainiframe").contentWindow
 * frames['mainiframe']
@@ -19,12 +21,17 @@ $(function () {
     Select.pageInit(iframeWin);
 
 
-    $(iframeWin.document).click(function (event) {
+    $(iframeWin.document.body).click(function (event) {
       // event.stopPropagation();
       const target = event.target;
-      $(target).toggleClass('add');
-      // console.log(target.innerHTML);
-      // console.log(target.parentNode.outerHTML);
+      const path = Select.getCssPath(target);
+      // const path = cssPath(target);  太精确了
+      // console.log('this', this);   // body
+      // console.log('target', target);
+      $(this).find(path).toggleClass('add');
+
+      console.log("css-path" + path);
+      // $(target).toggleClass('add');
       /*getElementXpath(event.toElement, function (err, xpath) {
         if(err) {
           console.log(err);
@@ -32,8 +39,6 @@ $(function () {
           console.log('xpath', xpath);
         }
       });*/
-    /*  var path = Select.getCssPath(target);
-      console.log("path：" + path);*/
     });
   }
 
