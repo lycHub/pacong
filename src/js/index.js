@@ -5,7 +5,6 @@ import * as Select from './select';
 import iframeStr from './strs/baiduStr';
 // import iframeStr from './strs/zhanzhang';
 import getElementXpath from 'element-xpath';
-import cssPath from 'css-path';
 
 /*
 * document.getElementById("mainiframe").contentWindow
@@ -25,12 +24,11 @@ $(function () {
       // event.stopPropagation();
       const target = event.target;
       const path = Select.getCssPath(target);
-      // const path = cssPath(target);  太精确了
       // console.log('this', this);   // body
       // console.log('target', target);
       $(this).find(path).toggleClass('add');
 
-      console.log("css-path" + path);
+      // console.log("getCssPath" + path);
       // $(target).toggleClass('add');
       /*getElementXpath(event.toElement, function (err, xpath) {
         if(err) {

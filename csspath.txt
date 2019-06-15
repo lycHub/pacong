@@ -1,6 +1,4 @@
 cssPath:
-https://github.com/micnews/css-path
-https://github.com/ajhsu/csspath/blob/master/lib/index.js
-https://github.com/angus-c/cssPath/blob/master/lib/cssPath.js
-https://github.com/diguazai/get-css-path/blob/master/index.js
+https://github.com/micnews/css-path   太精确
+https://github.com/ajhsu/csspath/blob/master/lib/index.js   比较精确
 https://stackoverflow.com/questions/3620116/get-css-path-from-dom-element

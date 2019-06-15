@@ -1,5 +1,4 @@
 import $ from 'jquery';
-import cssPath from 'css-path';
 /**
  * 获取传入元素的cssSelector
  * @param dom
@@ -11,13 +10,14 @@ export function getCssPath(dom) {
     if (dom.tagName == 'BODY') {
       break
     }
-    var index = 1;
+    /*var index = 1;
     for (var sib = dom.previousSibling; sib; sib = sib.previousSibling) {
       if (sib.nodeType == 1 && sib.tagName == dom.tagName) index++
-    }
+    }*/
     var xname = '>' + dom.tagName.toLowerCase();
-    if (dom.id) {
-      xname += '#' + dom.id
+    const id = dom.getAttribute('id');  // dom.id?
+    if (id) {
+      xname += '#' + id
     } else if (dom.className) {
       xname += '.' + dom.className.replace(new RegExp(/( )/g), '.')
     } else {
@@ -25,6 +25,7 @@ export function getCssPath(dom) {
     }
     path = xname + path
   }
+  // console.log('da', path);
   if (path.substring(0, 1) == '>') {
     path = path.replace('>', '')
   }
